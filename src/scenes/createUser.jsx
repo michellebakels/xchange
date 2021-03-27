@@ -37,19 +37,19 @@ const CreateUser = () => {
                                         name="email"
                                         label="Email"
                                     />
-                                    <AntdTextArea
+                                    <AntdInput
                                         name="mySkills"
                                         label="My Skills"
                                     />
-                                    <AntdTextArea
+                                    <AntdInput
                                         name="website"
                                         label="Website"
                                     />
-                                    <AntdTextArea
+                                    <AntdInput
                                         name="calendlyLink"
                                         label="Calendly Link"
                                     />
-                                    <AntdTextArea
+                                    <AntdInput
                                         name="additionalInformation"
                                         label="Additional Info"
                                     />
