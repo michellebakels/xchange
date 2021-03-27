@@ -42,7 +42,7 @@ const CreateUser = () => {
                                         label="My Skills"
                                     />
                                     <AntdTextArea
-                                        name="webiste"
+                                        name="website"
                                         label="Website"
                                     />
                                     <AntdTextArea
