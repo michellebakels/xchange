@@ -47,37 +47,37 @@ function App() {
                 </Menu.Item>
             </Menu>
           </Header>
-          <Content style={{ padding: '0 50px', minHeight: '80vh' }}>
+          <Content style={{ padding: '24px 50px', minHeight: '80vh' }}>
             <div>
-          <Switch>
-            <Route path="/userProfile">
-              <UserProfile />
-            </Route>
-            <Route path="/users">
-              <Users />
-            </Route>
-            <Route path="/createProject">
-              <CreateProject />
-            </Route>
-            <Route path="/createUser">
-              <CreateUser />
-            </Route>
-            <Route path="/transactions">
-              <Transactions />
-            </Route>
-            <Route path="/createTransaction">
-              <CreateTransaction />
-            </Route>
-            <Route path="/about">
-              <About />
-            </Route>
-            <Route path="/">
-              <Home />
-            </Route>
-          </Switch>
+              <Switch>
+                <Route path="/userProfile">
+                  <UserProfile />
+                </Route>
+                <Route path="/users">
+                  <Users />
+                </Route>
+                <Route path="/createProject">
+                  <CreateProject />
+                </Route>
+                <Route path="/createUser">
+                  <CreateUser />
+                </Route>
+                <Route path="/transactions">
+                  <Transactions />
+                </Route>
+                <Route path="/createTransaction">
+                  <CreateTransaction />
+                </Route>
+                <Route path="/about">
+                  <About />
+                </Route>
+                <Route path="/">
+                  <Home />
+                </Route>
+              </Switch>
             </div>
           </Content>
-          <Footer style={{ textAlign: 'center' }}>Created for 1909 Xchange</Footer>
+          <Footer style={{ textAlign: 'center' }}>Copyright © 2021. All Rights Reserved</Footer>
         </Layout>
       </Router>
   );
