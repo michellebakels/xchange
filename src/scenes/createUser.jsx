@@ -38,8 +38,8 @@ const CreateUser = () => {
                                         label="Email"
                                     />
                                     <AntdTextArea
-                                        name="mySkils"
-                                        label="My SKills"
+                                        name="mySkills"
+                                        label="My Skills"
                                     />
                                     <Button
                                         type="primary"
