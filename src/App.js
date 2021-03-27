@@ -6,6 +6,8 @@ import {
   Route,
   Link
 } from "react-router-dom"
+import 'antd/dist/antd.css';
+import {Layout, Menu} from 'antd';
 import Home from "./scenes/home";
 import Users from "./scenes/users";
 import UserProfile from "./scenes/userProfile";
@@ -15,26 +17,38 @@ import About from "./scenes/about";
 import Transactions from "./scenes/transactions";
 import CreateTransaction from "./scenes/createTransaction";
 
+const { Header, Content, Footer } = Layout;
+
 function App() {
   return (
       <Router>
-        <div>
-          <nav>
-            <ul>
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                <Link to="/users">Users</Link>
-              </li>
-              <li>
-                <Link to="/transactions">Transactions</Link>
-              </li>
-              <li>
-                <Link to="/about">About</Link>
-              </li>
-            </ul>
-          </nav>
+        <Layout className="layout">
+          <Header style={{background: 'white'}}>
+            <Menu mode="horizontal">
+                <Menu.Item key="1">
+                  <Link to="/">
+                    Home
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="2">
+                  <Link to="/users">
+                    Users
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="3">
+                  <Link to="/transactions">
+                    Transactions
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="4">
+                  <Link to="/about">
+                    About
+                  </Link>
+                </Menu.Item>
+            </Menu>
+          </Header>
+          <Content style={{ padding: '0 50px', minHeight: '80vh' }}>
+            <div>
           <Switch>
             <Route path="/userProfile">
               <UserProfile />
@@ -61,7 +75,10 @@ function App() {
               <Home />
             </Route>
           </Switch>
-        </div>
+            </div>
+          </Content>
+          <Footer style={{ textAlign: 'center' }}>Created for 1909 Xchange</Footer>
+        </Layout>
       </Router>
   );
 }
