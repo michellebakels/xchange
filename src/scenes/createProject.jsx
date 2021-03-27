@@ -34,8 +34,8 @@ const CreateProject = () => {
                                         label="Needed By"
                                     />
                                     <AntdInput
-                                        name="estimatedTime"
-                                        label="Estimated Time"
+                                        name="estimatedHours"
+                                        label="Estimated Hours"
                                     />
                                     <AntdTextArea
                                         name="description"
