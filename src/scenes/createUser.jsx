@@ -41,6 +41,18 @@ const CreateUser = () => {
                                         name="mySkills"
                                         label="My Skills"
                                     />
+                                    <AntdTextArea
+                                        name="webiste"
+                                        label="Website"
+                                    />
+                                    <AntdTextArea
+                                        name="calendlyLink"
+                                        label="Calendly Link"
+                                    />
+                                    <AntdTextArea
+                                        name="additionalInformation"
+                                        label="Additional Info"
+                                    />
                                     <Button
                                         type="primary"
                                     >
