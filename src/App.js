@@ -50,13 +50,13 @@ function App() {
           <Content style={{ padding: '24px 50px', minHeight: '80vh' }}>
             <div>
               <Switch>
-                <Route path="/userProfile">
+                <Route path="/user-profile">
                   <UserProfile />
                 </Route>
                 <Route path="/users">
                   <Users />
                 </Route>
-                <Route path="/createProject">
+                <Route path="/create-project">
                   <CreateProject />
                 </Route>
                 <Route path="/createUser">
@@ -65,7 +65,7 @@ function App() {
                 <Route path="/transactions">
                   <Transactions />
                 </Route>
-                <Route path="/createTransaction">
+                <Route path="/create-transaction">
                   <CreateTransaction />
                 </Route>
                 <Route path="/about">
