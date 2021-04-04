@@ -1,0 +1,11 @@
+.title-card {
+    text-align: center;
+}
+
+.tag {
+    background: #109CF1;
+    color: white;
+    border-radius: 25px;
+    padding: 4px 12px;
+    margin: 8px;
+}
