@@ -17,6 +17,7 @@ import About from "./scenes/about";
 import Transactions from "./scenes/transactions";
 import CreateTransaction from "./scenes/createTransaction";
 import {HomeOutlined, SwapOutlined, UserOutlined, CoffeeOutlined} from '@ant-design/icons';
+import ProjectDetails from "./scenes/projectDetails";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -88,6 +89,9 @@ function App() {
                   </Route>
                   <Route path="/about">
                     <About />
+                  </Route>
+                  <Route path="/project">
+                    <ProjectDetails />
                   </Route>
                   <Route path="/">
                     <Home />

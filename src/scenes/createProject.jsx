@@ -17,7 +17,7 @@ const CreateProject = () => {
                         {...layout}
                     >
                         <Card
-                            title="Create Project"
+                            title="Create ProjectDetails"
                         >
                             <Row justify="space-around">
                                 <Col span={10}  style={{textAlign: 'right'}}>
