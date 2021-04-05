@@ -17,7 +17,7 @@ const CreateProject = () => {
                         {...layout}
                     >
                         <Card
-                            title="Create Index"
+                            title="Create Project"
                         >
                             <Row justify="space-around">
                                 <Col span={10}  style={{textAlign: 'right'}}>
@@ -34,8 +34,8 @@ const CreateProject = () => {
                                         label="Needed By"
                                     />
                                     <AntdInput
-                                        name="estimatedHours"
-                                        label="Estimated Hours"
+                                        name="tokens"
+                                        label="Tokens"
                                     />
                                     <AntdTextArea
                                         name="description"

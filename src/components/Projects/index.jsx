@@ -2,6 +2,7 @@ import React from 'react'
 import {Table, Tag} from "antd";
 import {Link} from "react-router-dom";
 import {data} from "../../data";
+import './styles.css'
 
 const columns = [
     {
@@ -47,6 +48,9 @@ const columns = [
 const Projects = () => {
     return (
         <div>
+            <div className="create-project-link">
+                <Link to="/create-project">+ Create New Project</Link>
+            </div>
             <Table
                 columns={columns}
                 dataSource={data}
