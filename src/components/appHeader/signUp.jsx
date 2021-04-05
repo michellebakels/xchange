@@ -9,6 +9,8 @@ const SignUp = () => {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [firstName, setFirstName] = useState('')
+    const [lastName, setLastName] = useState('')
     const [error, setErrors] = useState('')
     const history = useHistory();
 
@@ -17,7 +19,21 @@ const SignUp = () => {
             <Card
                 title="Sign Up"
             >
-                <form onSubmit={(e) => handleSignUp(e, email, password, history, setErrors)}>
+                <form onSubmit={(e) => handleSignUp(e, email, password, firstName, lastName, history, setErrors)}>
+                <AntdInput
+                        value={firstName}
+                        onChange={e => setFirstName(e.target.value)}
+                        name="firstName"
+                        type="firstName"
+                        placeholder="First Name"
+                    />
+                    <AntdInput
+                        value={lastName}
+                        onChange={e => setLastName(e.target.value)}
+                        name="lastName"
+                        type="lastName"
+                        placeholder="Last Name"
+                    />
                     <AntdInput
                         value={email}
                         onChange={e => setEmail(e.target.value)}

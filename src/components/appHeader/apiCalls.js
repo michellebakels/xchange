@@ -1,8 +1,10 @@
 import firebase from "firebase";
 
-export const apiCallCreateUser = (email) => {
+export const apiCallCreateUser = (email, firstName, lastName) => {
     const user = {
         'email': email,
+        'firstName': firstName,
+        'lastName': lastName,
     }
 
     fetch('https://xchange-api-1909.web.app/users', {
@@ -27,14 +29,14 @@ export const handleLogin = (e, email, password, history, setErrors) => {
         })
 }
 
-export const handleSignUp = (e, email, password, history, setErrors) => {
+export const handleSignUp = (e, email, password, firstName, lastName, history, setErrors) => {
     e.preventDefault()
 
     firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
         .then(() => {
             firebase.auth().createUserWithEmailAndPassword(email, password)
                 .then((result) => {
-                    apiCallCreateUser(email)
+                    apiCallCreateUser(email, firstName, lastName)
                 })
                 .then(res => {
                     history.push('/')
