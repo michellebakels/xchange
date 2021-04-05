@@ -57,3 +57,16 @@ export const resetPassword = (email, setErrors) => {
         setErrors(error.message)
     })
 }
+export const updateUser = (e, email, password, firstName, lastName, history, setErrors) => {
+    
+    fetch('https://xchange-api-1909.web.app/users', {
+        method: "PATCH",
+        body: JSON.stringify(),
+        headers: {"Content-type": "application/json; charset=UTF-8"}
+    })
+    .then((result) => result.json())
+    .then(res => {
+        history.push('/')
+    })
+    .catch(e => setErrors(e.message))
+}
