@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, createContext} from 'react'
 import './App.css'
 import {
   BrowserRouter as Router,
@@ -6,6 +6,8 @@ import {
   Route,
   Link
 } from "react-router-dom"
+import firebase from 'firebase/app'
+import {firebaseConfig} from "./config";
 import 'antd/dist/antd.css';
 import {Layout, Menu} from 'antd';
 import Home from "./scenes/home";
@@ -17,14 +19,23 @@ import About from "./scenes/about";
 import Transactions from "./scenes/transactions";
 import CreateTransaction from "./scenes/createTransaction";
 import {HomeOutlined, SwapOutlined, UserOutlined, CoffeeOutlined} from '@ant-design/icons';
-import Index from "./components/projectDetails";
+import Project from "./components/projectDetails";
+import AppHeader from "./components/appHeader";
+import SignUp from "./components/appHeader/signUp";
+import Login from "./components/appHeader/login";
 
-const { Header, Content, Footer, Sider } = Layout;
 
+const { Content, Footer, Sider } = Layout;
+
+firebase.initializeApp(firebaseConfig)
+
+export const AuthContext = createContext(undefined)
 
 function App() {
 
     const [collapsed, setCollapsed] = useState(false)
+    const [authUser, setAuthUser] = useState(null)
+
 
     const onCollapse = collapsed => {
         setCollapsed(!collapsed);
@@ -32,6 +43,7 @@ function App() {
 
   return (
       <Router>
+          <AuthContext.Provider value={{ authUser, setAuthUser }}>
         <Layout style={{ minHeight: '100vh' }}>
             <Sider collapsible collapsed={collapsed} onCollapse={onCollapse.bind(undefined, collapsed)}>
                 <div>
@@ -65,34 +77,40 @@ function App() {
                 </div>
             </Sider>
           <Layout>
-            <Header style={{background: 'white'}}/>
+              <AppHeader />
             <Content style={{ padding: '24px 50px'}}>
               <div>
                 <Switch>
                   <Route path="/user-profile">
-                    <UserProfile />
+                      {authUser && <UserProfile />}
                   </Route>
                   <Route path="/users">
-                    <Users />
+                      {authUser && <Users />}
                   </Route>
                   <Route path="/create-project">
-                    <CreateProject />
+                      {authUser && <CreateProject />}
                   </Route>
                   <Route path="/createUser">
-                    <CreateUser />
+                      {authUser && <CreateUser />}
                   </Route>
                   <Route path="/transactions">
-                    <Transactions />
+                      {authUser && <Transactions />}
                   </Route>
                   <Route path="/create-transaction">
-                    <CreateTransaction />
+                      {authUser && <CreateTransaction />}
                   </Route>
                   <Route path="/about">
                     <About />
                   </Route>
                   <Route path="/project">
-                    <Index />
+                    <Project />
                   </Route>
+                    <Route exact path="/login">
+                        <Login/>
+                    </Route>
+                    <Route exact path="/signup">
+                        <SignUp />
+                    </Route>
                   <Route path="/">
                     <Home />
                   </Route>
@@ -102,6 +120,7 @@ function App() {
             <Footer style={{ textAlign: 'center' }}>Copyright © 2021. All Rights Reserved</Footer>
           </Layout>
         </Layout>
+          </AuthContext.Provider>
       </Router>
   );
 }

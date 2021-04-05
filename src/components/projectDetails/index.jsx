@@ -3,7 +3,7 @@ import {Card, Col, Row} from "antd";
 import {data} from "../../data";
 import './styles.css'
 
-const Index = () => {
+const Project = () => {
 
     const task = data[0]
 
@@ -38,4 +38,4 @@ const Index = () => {
     )
 }
 
-export default Index
+export default Project

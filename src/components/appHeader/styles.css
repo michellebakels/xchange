@@ -1,0 +1,29 @@
+.headerItem {
+    margin: 0 32px;
+    color: #FFF;
+}
+
+.appWrapperHeader {
+    font-size: large;
+    font-weight: bold;
+}
+
+.emailButton {
+    margin-left: 8px;
+    float: right;
+}
+
+.resetButton {
+    border: none;
+    padding: 0px;
+    margin-bottom: 24px;
+}
+
+.passwordField {
+    margin-bottom: 0px !important;
+}
+
+.errorMessage {
+    margin: 16px 0 0 0;
+    color: #FF0000
+}
