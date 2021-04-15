@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {Button, Card, Col, Form, Row} from "antd";
 import {AntdTextArea, AntdInput} from "../components/antdMappedComponents/antdMapper";
 
@@ -8,13 +8,23 @@ export const layout = {
 }
 
 const CreateProject = () => {
+    const [form] = Form.useForm()
+    const [fields, setFields] = useState();
+
+    const submitForm = () => {
+
+    }
+
     return(
         <>
             <Row justify="space-around">
                 <Col span={24}>
                     <Form
                         name="createProject"
+                        form={form}
+                        fields={fields}
                         {...layout}
+                        onFieldsChange={(changedFields, allFields) => setFields(allFields)}
                     >
                         <Card
                             title="Create Project"
@@ -43,6 +53,7 @@ const CreateProject = () => {
                                     />
                                     <Button
                                         type="primary"
+                                        onClick={() => submitForm(fields)}
                                     >
                                         Submit
                                     </Button>

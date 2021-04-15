@@ -30,12 +30,13 @@ const { Content, Footer, Sider } = Layout;
 firebase.initializeApp(firebaseConfig)
 
 export const AuthContext = createContext(undefined)
+export const UserContext = createContext(undefined)
 
 function App() {
 
     const [collapsed, setCollapsed] = useState(false)
     const [authUser, setAuthUser] = useState(null)
-
+    const [userInfo, setUserInfo] = useState(null)
 
     const onCollapse = collapsed => {
         setCollapsed(!collapsed);
@@ -44,6 +45,7 @@ function App() {
   return (
       <Router>
           <AuthContext.Provider value={{ authUser, setAuthUser }}>
+          <UserContext.Provider value={{ userInfo, setUserInfo }} >
         <Layout style={{ minHeight: '100vh' }}>
             <Sider collapsible collapsed={collapsed} onCollapse={onCollapse.bind(undefined, collapsed)}>
                 <div>
@@ -120,7 +122,8 @@ function App() {
             <Footer style={{ textAlign: 'center' }}>Copyright © 2021. All Rights Reserved</Footer>
           </Layout>
         </Layout>
-          </AuthContext.Provider>
+        </UserContext.Provider>
+        </AuthContext.Provider>
       </Router>
   );
 }
