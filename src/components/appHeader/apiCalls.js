@@ -31,13 +31,13 @@ export const handleLogin = (e, email, password, history, setErrors, setUserInfo)
     firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
         .then(() => {
             firebase.auth().signInWithEmailAndPassword(email, password)
-                .then(json => {
-                    history.push('/')
-                })
-                .then((res) => {
-                    getUserInfo(email, setUserInfo)
-                } )
-                .catch(e => setErrors(e.message))
+            .then((res) => {
+                getUserInfo(email, setUserInfo)
+            } )
+            .then(json => {
+                history.push('/')
+            })
+            .catch(e => setErrors(e.message))
         })
 }
 
