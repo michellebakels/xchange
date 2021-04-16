@@ -1,9 +1,10 @@
-import React, {useState} from 'react'
+import React, {useContext, useState} from 'react'
 import { Card, Row, Button } from 'antd'
 import { useHistory } from 'react-router-dom'
 import './styles.css'
 import {handleSignUp} from "./apiCalls";
 import AntdInput, {AntdInputPassword} from "../antdMappedComponents/antdMapper";
+import {UserContext} from "../../App";
 
 const SignUp = () => {
 
@@ -13,13 +14,14 @@ const SignUp = () => {
     const [lastName, setLastName] = useState('')
     const [error, setErrors] = useState('')
     const history = useHistory();
+    const { setUserInfo } = useContext(UserContext)
 
     return (
         <Row justify="space-around">
             <Card
                 title="Sign Up"
             >
-                <form onSubmit={(e) => handleSignUp(e, email, password, firstName, lastName, history, setErrors)}>
+                <form onSubmit={(e) => handleSignUp(e, email, password, firstName, lastName, history, setErrors, setUserInfo)}>
                 <AntdInput
                         value={firstName}
                         onChange={e => setFirstName(e.target.value)}

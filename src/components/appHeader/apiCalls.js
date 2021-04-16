@@ -1,6 +1,6 @@
 import firebase from "firebase";
 
-export const apiCallCreateUser = (email, firstName, lastName) => {
+export const apiCallCreateUser = (email, firstName, lastName, setUserInfo) => {
     const user = {
         'email': email,
         'firstName': firstName,
@@ -13,16 +13,8 @@ export const apiCallCreateUser = (email, firstName, lastName) => {
         headers: {"Content-type": "application/json; charset=UTF-8"}
     })
         .then(response => response.json())
+        .then(res => setUserInfo(res.data))
         .catch(err => console.log('ERROR', err))
-}
-
-export const getUserInfo = (email, setUserInfo) => {
-    fetch (`https://xchange-api-1909.web.app/users/${email}`)
-        .then((res) => res.json())
-        .then((data) => {
-            setUserInfo(data);
-          })
-          .catch(err => console.log('ERROR', err))
 }
 
 export const handleLogin = (e, email, password, history, setErrors, setUserInfo) => {
@@ -31,9 +23,9 @@ export const handleLogin = (e, email, password, history, setErrors, setUserInfo)
     firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
         .then(() => {
             firebase.auth().signInWithEmailAndPassword(email, password)
-            .then((res) => {
-                getUserInfo(email, setUserInfo)
-            } )
+            .then((res) =>
+                setUserInfo(res)
+             )
             .then(json => {
                 history.push('/')
             })
@@ -41,14 +33,14 @@ export const handleLogin = (e, email, password, history, setErrors, setUserInfo)
         })
 }
 
-export const handleSignUp = (e, email, password, firstName, lastName, history, setErrors) => {
+export const handleSignUp = (e, email, password, firstName, lastName, history, setErrors, setUserInfo) => {
     e.preventDefault()
 
     firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
         .then(() => {
             firebase.auth().createUserWithEmailAndPassword(email, password)
                 .then((result) => {
-                    apiCallCreateUser(email, firstName, lastName)
+                    apiCallCreateUser(email, firstName, lastName, setUserInfo)
                 })
                 .then(res => {
                     history.push('/')
@@ -70,7 +62,6 @@ export const resetPassword = (email, setErrors) => {
     })
 }
 export const updateUser = (e, email, password, firstName, lastName, history, setErrors) => {
-    
     fetch('https://xchange-api-1909.web.app/users', {
         method: "PATCH",
         body: JSON.stringify(),
