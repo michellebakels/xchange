@@ -1,6 +1,7 @@
 import React from 'react';
-import { Form } from 'antd';
-import {SelectOption} from "./antdUtils";
+import { Form, Select } from 'antd';
+
+const { Option } = Select;
 
 const AntdFormItem = (FormItem, props) => {
 
@@ -47,7 +48,7 @@ const AntdFormItem = (FormItem, props) => {
                     mode={mode}
                     hidden={hidden}
                 >
-                    {FormItem.Option && data && SelectOption(data.collection , data.name, data.id)}
+                    {FormItem.Option && data && data.map(data => <Option key={data}>{data}</Option>)}
                 </FormItem>
         </Form.Item>
     )

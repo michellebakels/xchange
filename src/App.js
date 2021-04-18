@@ -25,7 +25,6 @@ import SignUp from "./components/appHeader/signUp";
 import Login from "./components/appHeader/login";
 import {useStickyState} from "./global/useStickyState";
 
-
 const { Content, Footer, Sider } = Layout;
 
 firebase.initializeApp(firebaseConfig)
