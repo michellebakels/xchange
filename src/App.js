@@ -23,6 +23,7 @@ import Project from "./components/projectDetails";
 import AppHeader from "./components/appHeader";
 import SignUp from "./components/appHeader/signUp";
 import Login from "./components/appHeader/login";
+import {useStickyState} from "./global/useStickyState";
 
 
 const { Content, Footer, Sider } = Layout;
@@ -36,7 +37,7 @@ function App() {
 
     const [collapsed, setCollapsed] = useState(false)
     const [authUser, setAuthUser] = useState(null)
-    const [userInfo, setUserInfo] = useState(null)
+    const [userInfo, setUserInfo] = useStickyState(null)
 
     const onCollapse = collapsed => {
         setCollapsed(!collapsed);

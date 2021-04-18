@@ -1,7 +1,6 @@
 import React from 'react'
 import {Button, Card, Col, Form, Row} from "antd";
-import {AntdInput, AntdTextArea} from "../components/antdMappedComponents/antdMapper";
-import {updateUser} from "../components/appHeader/apiCalls";
+import {AntdInput} from "../components/antdMappedComponents/antdMapper";
 
 export const layout = {
     labelCol: { span: 6 },

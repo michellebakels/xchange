@@ -17,15 +17,24 @@ export const apiCallCreateUser = (email, firstName, lastName, setUserInfo) => {
         .catch(err => console.log('ERROR', err))
 }
 
+export const getUserInfo = (email, setUserInfo) => {
+    fetch (`https://xchange-api-1909.web.app/users/${email}`)
+        .then((res) => res.json())
+        .then((response) => {
+            setUserInfo(response.data);
+        })
+        .catch(err => console.log('ERROR', err))
+}
+
 export const handleLogin = (e, email, password, history, setErrors, setUserInfo) => {
     e.preventDefault()
 
     firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
         .then(() => {
             firebase.auth().signInWithEmailAndPassword(email, password)
-            .then((res) =>
-                setUserInfo(res)
-             )
+            .then((res) => {
+                getUserInfo(email, setUserInfo)
+            })
             .then(json => {
                 history.push('/')
             })
