@@ -24,6 +24,7 @@ import AppHeader from "./components/appHeader";
 import SignUp from "./components/appHeader/signUp";
 import Login from "./components/appHeader/login";
 import {useStickyState} from "./global/useStickyState";
+import AppMenu from "./menu";
 
 const { Content, Footer, Sider } = Layout;
 
@@ -54,28 +55,7 @@ function App() {
                             <img className="logo-img" src="https://weare1909.org/wp-content/uploads/2020/04/1909-logo@2x.png"/>
                         </div>
                     </div>
-                <Menu mode="inline">
-                    <Menu.Item key="1" icon={<HomeOutlined />}>
-                      <Link to="/">
-                        Home
-                      </Link>
-                    </Menu.Item>
-                    <Menu.Item key="2" icon={<SwapOutlined />}>
-                      <Link to="/transactions">
-                        Transactions
-                      </Link>
-                    </Menu.Item>
-                    <Menu.Item key="3" icon={<UserOutlined />}>
-                        <Link to="/users">
-                            Users
-                        </Link>
-                    </Menu.Item>
-                    <Menu.Item key="4" icon={<CoffeeOutlined />}>
-                      <Link to="/about">
-                        About
-                      </Link>
-                    </Menu.Item>
-                </Menu>
+                <AppMenu/>
                 </div>
             </Sider>
           <Layout>

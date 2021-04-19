@@ -23,6 +23,7 @@ const AntdFormItem = (FormItem, props) => {
         mode,
         hidden,
         valuePropName,
+        format,
         ...rest
     } = props;
 
@@ -47,6 +48,7 @@ const AntdFormItem = (FormItem, props) => {
                     showSearch={showSearch}
                     mode={mode}
                     hidden={hidden}
+                    format={format}
                 >
                     {FormItem.Option && data && data.map(data => <Option key={data}>{data}</Option>)}
                 </FormItem>

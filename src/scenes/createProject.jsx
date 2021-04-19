@@ -1,6 +1,7 @@
 import React, {useState, useContext} from 'react'
 import {Button, Card, Col, Form, Row} from "antd";
-import {AntdTextArea, AntdInput, AntdSelect} from "../components/antdMappedComponents/antdMapper";
+import moment from 'moment';
+import {AntdTextArea, AntdInput, AntdSelect, AntdDatePicker} from "../components/antdMappedComponents/antdMapper";
 import {UserContext} from "../App";
 import {points, skills} from "../global/referenceData";
 
@@ -12,7 +13,14 @@ export const layout = {
 const submitForm = (fields, userInfo) => {
     const formFields = {}
     fields && fields.forEach((field) => formFields[field.name[0]] = field.value)
-    formFields.userId = userInfo.id
+    formFields.tokens = formFields.tokens && parseInt(formFields.tokens)
+    formFields.neededBy = moment(formFields.neededBy).format('MM/DD/YYYY')
+    formFields.user = {
+        userId: userInfo?.id,
+        firstName: userInfo?.firstName,
+        lastName: userInfo?.lastName,
+        email: userInfo?.email
+    }
 
     fetch('https://xchange-api-1909.web.app/tasks', {
         method: "POST",
@@ -43,7 +51,7 @@ const CreateProject = () => {
                             title="Create Project"
                         >
                             <Row justify="space-around">
-                                <Col span={18}  style={{textAlign: 'right'}}>
+                                <Col span={18}>
                                     <AntdInput
                                         name="title"
                                         label="Title"
@@ -54,9 +62,10 @@ const CreateProject = () => {
                                         mode="multiple"
                                         data={skills}
                                     />
-                                    <AntdInput
+                                    <AntdDatePicker
                                         name="neededBy"
                                         label="Needed By"
+                                        format={"MM/DD/YYYY"}
                                     />
                                     <AntdSelect
                                         name="tokens"
