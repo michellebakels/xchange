@@ -14,17 +14,17 @@ import Home from "./scenes/home";
 import Users from "./scenes/users";
 import UserProfile from "./scenes/userProfile";
 import CreateProject from "./scenes/createProject";
-import CreateUser from "./scenes/createUser";
+import UpdateUser from "./scenes/updateUser";
 import About from "./scenes/about";
 import Transactions from "./scenes/transactions";
 import CreateTransaction from "./scenes/createTransaction";
-import {HomeOutlined, SwapOutlined, UserOutlined, CoffeeOutlined} from '@ant-design/icons';
 import Project from "./components/projectDetails";
 import AppHeader from "./components/appHeader";
 import SignUp from "./components/appHeader/signUp";
 import Login from "./components/appHeader/login";
 import {useStickyState} from "./global/useStickyState";
-import AppMenu from "./menu";
+import AppMenu from "./components/appMenu";
+import AppLogo from "./components/appLogo";
 
 const { Content, Footer, Sider } = Layout;
 
@@ -50,12 +50,8 @@ function App() {
         <Layout style={{ minHeight: '100vh' }}>
             <Sider collapsible collapsed={collapsed} onCollapse={onCollapse.bind(undefined, collapsed)}>
                 <div>
-                    <div className="logo-container">
-                        <div className="logo">
-                            <img className="logo-img" src="https://weare1909.org/wp-content/uploads/2020/04/1909-logo@2x.png"/>
-                        </div>
-                    </div>
-                <AppMenu/>
+                    <AppLogo/>
+                    <AppMenu/>
                 </div>
             </Sider>
           <Layout>
@@ -72,8 +68,8 @@ function App() {
                   <Route path="/create-project">
                       {authUser && <CreateProject />}
                   </Route>
-                  <Route path="/createUser">
-                      {authUser && <CreateUser />}
+                  <Route path="/updateUser">
+                      {authUser && <UpdateUser user={userInfo} />}
                   </Route>
                   <Route path="/transactions">
                       {authUser && <Transactions />}

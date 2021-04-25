@@ -22,3 +22,30 @@
 .ant-layout-sider {
     background: white !important;
 }
+
+.user-menu-item {
+    margin: 24px
+}
+
+.circle {
+    height: 25px;
+    width: 25px;
+    background-color: #555;
+    border-radius: 50%;
+}
+
+.user-name {
+    margin-left: 8px;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.user-email {
+    margin-left: 8px;
+    font-size: 12px;
+    color: gray
+}
+
+.ant-layout-sider-trigger {
+    width: inherit !important;
+}
