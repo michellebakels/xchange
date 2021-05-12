@@ -19,7 +19,17 @@ const Projects = () => {
     },[])
 
     useEffect(() => {
-        
+        const builtData = []
+
+        tasks.forEach(task => builtData.push(({
+            contact: (task.user && `${task.user.firstName} ${task.user.lastName}`),
+            title: task.title
+        })))
+
+        setTableData(builtData)
+
+        console.log('builtdata -->', builtData)
+
     }, [tasks])
 
     console.log(tasks)
@@ -31,7 +41,7 @@ const Projects = () => {
             </div>
             <Table
                 columns={columns}
-                dataSource={tasks}
+                dataSource={tableData}
             />
         </div>
     )
