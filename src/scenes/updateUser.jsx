@@ -2,11 +2,7 @@ import React, { useContext, useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import { Button, Card, Col, Form, Row, Upload, message } from 'antd'
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons'
-import {
-	AntdInput,
-	AntdSelect,
-	AntdTextArea,
-} from '../components/antdMappedComponents/antdMapper'
+import { AntdInput, AntdSelect, AntdTextArea } from '../components/antdMappedComponents/antdMapper'
 import { UserContext } from '../App'
 import { skills, tools } from '../global/referenceData'
 

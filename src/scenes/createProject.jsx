@@ -3,7 +3,7 @@ import {Button, Card, Col, Form, Row} from "antd";
 import moment from 'moment';
 import {AntdTextArea, AntdInput, AntdSelect, AntdDatePicker} from "../components/antdMappedComponents/antdMapper";
 import {UserContext} from "../App";
-import {points, skills} from "../global/referenceData";
+import {points, skills, tools} from "../global/referenceData";
 
 export const layout = {
     labelCol: { span: 6 },
@@ -61,6 +61,12 @@ const CreateProject = () => {
                                         label="Skills Needed"
                                         mode="multiple"
                                         data={skills}
+                                    />
+                                    <AntdSelect
+                                        name="toolsNeeded"
+                                        label="Tools Needed"
+                                        mode="multiple"
+                                        data={tools}
                                     />
                                     <AntdDatePicker
                                         name="neededBy"
