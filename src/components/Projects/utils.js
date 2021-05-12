@@ -37,5 +37,10 @@ export const columns = [
         title: 'Deadline',
         dataIndex: 'deadline',
         key: 'deadline',
+    },
+    {
+        title: 'Tokens',
+        dataIndex: 'tokens',
+        key: 'tokens',
     }
 ];

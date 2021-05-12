@@ -64,6 +64,13 @@ const UpdateUser = () => {
 			})
 			.catch((err) => console.log('ERROR', err))
 	}
+  const handleChange = info => {
+    getBase64(info.file.originFileObj, image => {
+       setUserInfo({...userInfo, userImage: image})
+       setLoading(false)
+       }
+     )
+  }
 
 	const submitForm = (fields, userId, setUserInfo) => {
 		const formFields = {}
