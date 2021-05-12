@@ -2,15 +2,7 @@ import React, { useContext, useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import { Button, Card, Col, Form, Row, Upload, message } from 'antd'
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons'
-<<<<<<< HEAD
-import {
-	AntdInput,
-	AntdSelect,
-	AntdTextArea,
-} from '../components/antdMappedComponents/antdMapper'
-=======
 import { AntdInput, AntdSelect, AntdTextArea } from '../components/antdMappedComponents/antdMapper'
->>>>>>> bc5e9af94b859e96bdc06b834cfb17be11ecae2f
 import { UserContext } from '../App'
 import { skills, tools } from '../global/referenceData'
 
@@ -22,7 +14,8 @@ export const layout = {
 const UpdateUser = () => {
 	const history = useHistory()
 
-    const [isValidImage, setIsValidImage] = useState(true)
+    const [isValidImage, setIsValidImage] = useState(false)
+    const [userImage, setUserImage] = useState(null)
 	const [loading, setLoading] = useState(false)
 	const [fields, setFields] = useState()
 	const { userInfo, setUserInfo } = useContext(UserContext)
@@ -51,7 +44,8 @@ const UpdateUser = () => {
 
 	const handleChange = (info) => {
 		getBase64(info.file.originFileObj, (image) => {
-			setUserInfo({ ...userInfo, userImage: image })
+            setUserImage(image)
+			// setUserInfo({ ...userInfo, userImage: image })
 			setLoading(false)
 		})
 	}
@@ -77,6 +71,7 @@ const UpdateUser = () => {
 		const formFields = {}
 		fields &&
 			fields.forEach((field) => (formFields[field.name[0]] = field.value))
+            formFields.userImage = userImage
 		console.log(JSON.stringify(formFields))
 
 		fetch(`https://xchange-api-1909.web.app/users/${userId}`, {
@@ -116,10 +111,10 @@ const UpdateUser = () => {
 										beforeUpload={beforeUpload}
 										onChange={handleChange}
 									>
-										{userInfo.userImage ? (
+										{userImage ? (
 											<img
-												src={userInfo.userImage}
-												alt="avatar"
+												src={userImage}
+												alt="Profile picture"
 												style={{ width: '100%' }}
 											/>
 										) : (
