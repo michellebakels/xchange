@@ -40,6 +40,12 @@
     font-size: 12px;
 }
 
+.profile-uploader {
+    display: flex !important;
+    justify-content: center !important;
+    padding-bottom: 30px;
+}
+
 .user-email {
     margin-left: 8px;
     font-size: 12px;

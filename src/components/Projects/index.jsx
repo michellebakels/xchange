@@ -1,51 +1,40 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import {Table, Tag} from "antd";
 import {Link} from "react-router-dom";
-import {data} from "../../data";
+// import {data} from "../../data";
 import './styles.css'
-
-const columns = [
-    {
-        title: 'Contact',
-        dataIndex: 'contact',
-        key: 'contact',
-    },
-    {
-        title: 'Project',
-        dataIndex: 'project',
-        key: 'project',
-        render: (text) => {
-            return {
-                children: <Link to='/project'>{text}</Link>,
-            };
-        },
-    },
-    {
-        title: 'Skills Needed',
-        key: 'skillsNeeded',
-        dataIndex: 'skillsNeeded',
-        render: tags => (
-            <>
-                {tags && tags.map(tag => {
-                    return (
-                        <Tag color='geekblue' key={tag}>
-                            {tag.toUpperCase()}
-                        </Tag>
-                    );
-                })}
-            </>
-        ),
-    },
-    {
-        title: 'Deadline',
-        dataIndex: 'deadline',
-        key: 'deadline',
-    }
-];
-
+import {columns} from "./utils";
 
 
 const Projects = () => {
+
+    const [tasks, setTasks] = useState([])
+    const [tableData, setTableData] = useState([])
+
+    useEffect(() => {
+        fetch (`https://xchange-api-1909.web.app/tasks`)
+            .then((res) => res.json())
+            .then((response) => setTasks(response.data))
+            .catch(err => console.log('ERROR', err))
+    },[])
+
+    useEffect(() => {
+        const builtData = []
+
+        tasks.forEach(task => builtData.push(({
+            contact: (task.user && `${task.user.firstName} ${task.user.lastName}`),
+            title: task.title,
+            skillsNeeded: task.skillsNeeded,
+            deadline: task.neededBy,
+            tokens: task.tokens
+        })))
+
+        setTableData(builtData)
+
+    }, [tasks])
+
+    console.log(tasks)
+
     return (
         <div>
             <div className="create-project-link">
@@ -53,7 +42,7 @@ const Projects = () => {
             </div>
             <Table
                 columns={columns}
-                dataSource={data}
+                dataSource={tableData}
             />
         </div>
     )
