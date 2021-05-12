@@ -1,5 +1,7 @@
-import {Link} from "react-router-dom";
-import {Tag} from "antd";
+import { Link } from "react-router-dom";
+import { Tag } from "antd";
+
+
 
 export const columns = [
     {
@@ -52,3 +54,4 @@ export const columns = [
         }
     }
 ];
+
