@@ -31,8 +31,6 @@ const Projects = () => {
 
         setTableData(builtData)
 
-        console.log('builtdata -->', builtData)
-
     }, [tasks])
 
     console.log(tasks)
