@@ -23,6 +23,11 @@ yarn-debug.log*
 yarn-error.log*
 
 src/config.js
+<<<<<<< HEAD
 firebase-debug.log
 yarn.lock
 package-lock.json
+=======
+package-lock.json
+firebase-debug.log
+>>>>>>> 410fed3d85bee470fa8ba14c9f214c7744676900

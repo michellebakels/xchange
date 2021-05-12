@@ -60,8 +60,6 @@ const UpdateUser = () => {
 
 
     const handleChange = info => {
-        
-        console.log('base64 image:', image)
         getBase64(info.file.originFileObj, image => {
             setUserInfo({...userInfo, userImage: image})
             setLoading(false)
