@@ -10,3 +10,10 @@ export const taskStatus = [
     'In Progress',
     'Done'
 ]
+
+export const tools = [
+    'mailchimp',
+    'figma',
+    'firestore',
+    'mongo db'
+]
