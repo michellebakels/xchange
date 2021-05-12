@@ -5,6 +5,7 @@
 /.pnp
 .pnp.js
 
+
 # testing
 /coverage
 
@@ -23,3 +24,5 @@ yarn-debug.log*
 yarn-error.log*
 
 src/config.js
+
+package-lock.json
