@@ -25,7 +25,8 @@ const Projects = () => {
             contact: (task.user && `${task.user.firstName} ${task.user.lastName}`),
             title: task.title,
             skillsNeeded: task.skillsNeeded,
-            deadline: task.neededBy
+            deadline: task.neededBy,
+            tokens: task.tokens
         })))
 
         setTableData(builtData)
