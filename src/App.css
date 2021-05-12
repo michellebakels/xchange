@@ -46,6 +46,10 @@
     padding-bottom: 30px;
 }
 
+.marketplace-filter {
+    width: 200px !important;
+}
+
 .user-email {
     margin-left: 8px;
     font-size: 12px;
