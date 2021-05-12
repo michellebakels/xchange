@@ -23,7 +23,7 @@ const Projects = () => {
 
         tasks.forEach(task => builtData.push(({
             contact: (task.user && `${task.user.firstName} ${task.user.lastName}`),
-            title: task.title,
+            title: task.title, // added this 
             skillsNeeded: task.skillsNeeded,
             deadline: task.neededBy
         })))
