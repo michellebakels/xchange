@@ -18,15 +18,18 @@ export const layout = {
 const UpdateUser = () => {
 	const history = useHistory()
 
+    const [isValidImage, setIsValidImage] = useState(true)
 	const [loading, setLoading] = useState(false)
 	const [fields, setFields] = useState()
 	const { userInfo, setUserInfo } = useContext(UserContext)
 	const [form] = Form.useForm()
 
 	const getBase64 = (img, callback) => {
-		const reader = new FileReader()
-		reader.addEventListener('load', () => callback(reader.result))
-		reader.readAsDataURL(img)
+		if (isValidImage){
+            const reader = new FileReader()
+		    reader.addEventListener('load', () => callback(reader.result))
+		    reader.readAsDataURL(img)
+        }
 	}
 
 	const beforeUpload = (file) => {
@@ -38,6 +41,7 @@ const UpdateUser = () => {
 		if (!isLt2M) {
 			message.error('Image must smaller than 2MB!')
 		}
+        setIsValidImage(isJpgOrPng && isLt2M)
 		return isJpgOrPng && isLt2M
 	}
 
@@ -55,13 +59,15 @@ const UpdateUser = () => {
 		</div>
 	)
 
-    const handleChange = info => {
-        getBase64(info.file.originFileObj, image => {
-            setUserInfo({...userInfo, userImage: image})
-            setLoading(false)
-            }
-          )
-      }
+    const apiCallGetUser = (userId, setUserInfo) => {
+        fetch(`https://xchange-api-1909.web.app/users/id/${userId}`)
+            .then(response => response.json())
+            .then((result) => {
+				setUserInfo(result.data)
+				history.push('/user-profile')
+			})
+            .catch(err => console.log('ERROR', err))
+    }
 
 	const submitForm = (fields, userId, setUserInfo) => {
 		const formFields = {}
