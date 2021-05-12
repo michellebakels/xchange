@@ -114,7 +114,7 @@ const UpdateUser = () => {
                                 <Upload
                                     name="avatar"
                                     listType="picture-card"
-                                    className="avatar-uploader"
+                                    className="profile-uploader"
                                     showUploadList={false}
                                     beforeUpload={beforeUpload}
                                     onChange={handleChange}
