@@ -6,7 +6,7 @@ import './styles.css'
 import {columns} from "./utils";
 
 
-const Projects = () => {
+const Task = () => {
 
     const [tasks, setTasks] = useState([])
     const [tableData, setTableData] = useState([])
@@ -38,7 +38,7 @@ const Projects = () => {
     return (
         <div>
             <div className="create-project-link">
-                <Link to="/create-project">+ Create New Project</Link>
+                <Link to="/create-task">+ Create New Task </Link>
             </div>
             <Table
                 columns={columns}
@@ -48,4 +48,4 @@ const Projects = () => {
     )
 }
 
-export default Projects
+export default Task

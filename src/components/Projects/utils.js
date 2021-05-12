@@ -13,7 +13,7 @@ export const columns = [
         key: 'title',
         render: (text) => {
             return {
-                children: <Link to='/project'>{text}</Link>,
+                children: <Link to='/task-info'>{text}</Link>,
             };
         },
     },

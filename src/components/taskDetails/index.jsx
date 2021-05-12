@@ -3,7 +3,7 @@ import {Card, Col, Row} from "antd";
 import {data} from "../../data";
 import './styles.css'
 
-const Project = () => {
+const TaskInfo = () => {
 
     const task = data[0]
 
@@ -29,7 +29,7 @@ const Project = () => {
                         <p><b>Status:&nbsp;</b>{task.status}</p>
                         <p><b>Due&nbsp;Date:&nbsp;</b>{task.deadline}</p>
                         <br/>
-                        <h3>Project Overview</h3>
+                        <h3>Task Overview</h3>
                         <p>{task.description}</p>
                     </Card>
                 </Col>
@@ -38,4 +38,4 @@ const Project = () => {
     )
 }
 
-export default Project
+export default TaskInfo
