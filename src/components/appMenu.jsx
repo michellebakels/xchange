@@ -13,7 +13,7 @@ const AppMenu = () => {
             <Menu mode="inline">
                 <Menu.Item key="1" icon={<UserOutlined/>}>
                     <Link to="/user-profile">
-                        {userInfo.firstName} {userInfo.lastName}
+                        {userInfo?.firstName} {userInfo?.lastName}
                     </Link>
                 </Menu.Item>
                 <Menu.Item key="2" icon={<HomeOutlined/>}>

@@ -1,0 +1,15 @@
+main{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(0.5fr, 1fr);
+
+    width: 100vw;
+    max-width: 800px;
+    height: 100vh;
+    max-height: 800px;
+
+}
+
+.ProfileHero{
+    
+}
