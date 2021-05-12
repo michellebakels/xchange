@@ -19,8 +19,8 @@ const Projects = () => {
     },[])
 
     useEffect(() => {
-        // buildTableData(tasks, tableData)
-    }, [])
+        
+    }, [tasks])
 
     console.log(tasks)
 
