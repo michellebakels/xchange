@@ -5,3 +5,8 @@ export const skills = [
     'branding',
     'software development'
 ]
+export const taskStatus = [
+    'Open',
+    'In Progress',
+    'Done'
+]
