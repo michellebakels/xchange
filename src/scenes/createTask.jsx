@@ -31,7 +31,7 @@ const submitForm = (fields, userInfo) => {
         .catch(err => console.log('ERROR', err))
 }
 
-const CreateProject = () => {
+const CreateTask = () => {
     const [form] = Form.useForm()
     const [fields, setFields] = useState();
     const {userInfo} = useContext(UserContext)
@@ -41,7 +41,7 @@ const CreateProject = () => {
             <Row justify="space-around">
                 <Col span={24}>
                     <Form
-                        name="createProject"
+                        name="createTask"
                         form={form}
                         fields={fields}
                         {...layout}
@@ -98,4 +98,4 @@ const CreateProject = () => {
     )
 }
 
-export default CreateProject
+export default CreateTask

@@ -25,6 +25,4 @@ yarn-error.log*
 src/config.js
 firebase-debug.log
 yarn.lock
-
-
 package-lock.json

@@ -13,12 +13,12 @@ import {Layout, Menu} from 'antd';
 import Home from "./scenes/home";
 import Users from "./scenes/users";
 import UserProfile from "./scenes/userProfile";
-import CreateProject from "./scenes/createProject";
+import CreateTask from "./scenes/createTask";
 import UpdateUser from "./scenes/updateUser";
 import About from "./scenes/about";
 import Transactions from "./scenes/transactions";
 import CreateTransaction from "./scenes/createTransaction";
-import Project from "./components/projectDetails";
+import Task from "./components/taskDetails";
 import AppHeader from "./components/appHeader";
 import SignUp from "./components/appHeader/signUp";
 import Login from "./components/appHeader/login";
@@ -65,8 +65,8 @@ function App() {
                   <Route path="/users">
                       {authUser && <Users />}
                   </Route>
-                  <Route path="/create-project">
-                      {authUser && <CreateProject />}
+                  <Route path="/create-task">
+                      {authUser && <CreateTask />}
                   </Route>
                   <Route path="/updateUser">
                       {authUser && <UpdateUser user={userInfo} />}
@@ -80,8 +80,8 @@ function App() {
                   <Route path="/about">
                     <About />
                   </Route>
-                  <Route path="/project">
-                    <Project />
+                  <Route path="/task-info">
+                    <Task />
                   </Route>
                     <Route exact path="/login">
                         <Login/>
