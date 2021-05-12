@@ -73,6 +73,15 @@ const UpdateUser = () => {
 			fields.forEach((field) => (formFields[field.name[0]] = field.value))
 		formFields.userImage = userImage
 		console.log(JSON.stringify(formFields))
+
+		fetch(`https://xchange-api-1909.web.app/users/${userId}`, {
+			method: 'PATCH',
+			body: JSON.stringify(formFields),
+			headers: { 'Content-type': 'application/json; charset=UTF-8' },
+		})
+			.then((response) => response.json())
+			.then((result) => apiCallGetUser(result.data.userId, setUserInfo))
+			.catch((err) => console.log('ERROR', err))
 	}
 
 	return (
