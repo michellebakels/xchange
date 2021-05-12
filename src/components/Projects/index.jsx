@@ -23,12 +23,16 @@ const Projects = () => {
 
         tasks.forEach(task => builtData.push(({
             contact: (task.user && `${task.user.firstName} ${task.user.lastName}`),
-            title: task.title
+            title: task.title,
+            skillsNeeded: task.skillsNeeded,
+            deadline: task.neededBy,
+            tokens: task.tokens
         })))
 
         setTableData(builtData)
 
         console.log('builtdata -->', builtData)
+
     }, [tasks])
 
     console.log(tasks)
