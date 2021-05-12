@@ -112,6 +112,7 @@ const UpdateUser = () => {
 												uploadButton
 											)}
 										</Upload>
+                                        
 										<AntdInput name="firstName" label="First Name" />
 										<AntdInput name="lastName" label="Last Name" />
 										<AntdInput name="company" label="Company" />
