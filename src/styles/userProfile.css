@@ -1,0 +1,32 @@
+main{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.5;
+    width: 100vw;
+    max-width: 800px;
+    height: 100vh;
+    max-height: 800px;
+}
+.userProfileHeaderGid{
+    display: flex;
+   
+}
+
+.imageBox{
+display: flex;
+width: 50vw;
+min-width: 200px;
+max-width: 250px;
+
+}
+
+.userInfoBox{
+    width: 50vw;
+    min-width: 100px;
+}
+
+.userProfileHero{
+    display: grid;
+    grid-template-columns: 1 1fr;
+    grid-template-rows: repeat(2 1fr);
+}
