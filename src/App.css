@@ -47,7 +47,8 @@
 }
 
 .marketplace-filter {
-    width: 200px !important;
+    width: 250px !important;
+    padding-right: 20px !important;
 }
 
 .user-email {

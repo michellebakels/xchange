@@ -1,4 +1,6 @@
 .create-project-link {
+    display: flex;
+    justify-content: space-evenly;
     margin: 24px;
-    float: right;
+    /* float: right; */
 }

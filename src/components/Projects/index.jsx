@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { Table, Tag, Button, Input, Dropdown, Menu } from "antd";
+import { Table, Tag, Button, Input, Dropdown, Menu, Select, message } from "antd";
 import { DownOutlined, UserOutlined } from '@ant-design/icons';
+import { skills, tools } from '../../global/referenceData.js';
+import { AntdSelect, AntdInput } from "../../components/antdMappedComponents/antdMapper";
 
 
 import { Link } from "react-router-dom";
@@ -36,35 +38,53 @@ const Projects = () => {
 
     console.log(tasks)
 
+    function handleButtonClick(e) {
+        message.info('Click on left button.');
+        console.log('click left button', e);
+    }
+
+    function handleMenuClick(e) {
+        message.info('Click on menu item.');
+        console.log('click', e);
+    }
+
     const menu = (
-        <Menu>
-            <Menu.Item key="1" icon={<UserOutlined />}>
-                1st menu item
-    </Menu.Item>
-            <Menu.Item key="2" icon={<UserOutlined />}>
-                2nd menu item
-    </Menu.Item>
-            <Menu.Item key="3" icon={<UserOutlined />}>
-                3rd menu item
-    </Menu.Item>
+        <Menu onClick={handleMenuClick}>
+            <AntdSelect
+                name="skillsNeeded"
+                label="Skills Needed"
+                mode="multiple"
+                data={skills}
+            />
         </Menu>
     );
 
     return (
         <div>
-            <Input className="marketplace-filter" placeholder="Name" />
-            <Dropdown overlay={menu}>
-                <Button>
-                    Task <DownOutlined />
-                </Button>
-            </Dropdown>
-            <Dropdown overlay={menu}>
-                <Button>
-                    Skills <DownOutlined />
-                </Button>
-            </Dropdown>
+            <div>
             <div className="create-project-link">
+                <AntdSelect
+                    className="marketplace-filter"
+                    name="nameNeeded"
+                    label="Name Needed"
+                    mode="multiple"
+                />
+                <AntdSelect
+                    className="marketplace-filter"
+                    name="skillsNeeded"
+                    label="Skills Needed"
+                    mode="multiple"
+                    data={skills}
+                />
+                <AntdSelect
+                    className="marketplace-filter"
+                    name="toolsNeeded"
+                    label="Tools Needed"
+                    mode="multiple"
+                    data={tools}
+                />
                 <Link to="/create-project">+ Create New Project</Link>
+            </div>
             </div>
             <Table
                 columns={columns}
