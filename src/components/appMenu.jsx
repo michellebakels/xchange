@@ -18,7 +18,7 @@ const AppMenu = () => {
                 </Menu.Item>
                 <Menu.Item key="2" icon={<HomeOutlined/>}>
                     <Link to="/">
-                        Home
+                        Marketplace
                     </Link>
                 </Menu.Item>
                 <Menu.Item key="3" icon={<SwapOutlined/>}>
