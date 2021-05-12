@@ -3,7 +3,7 @@ import {Button, Card, Col, Form, Row, Upload, message} from "antd";
 import {LoadingOutlined, PlusOutlined} from '@ant-design/icons';
 import {AntdInput, AntdSelect, AntdTextArea} from "../components/antdMappedComponents/antdMapper";
 import {UserContext} from "../App";
-import {skills} from "../global/referenceData";
+import {skills, tools} from "../global/referenceData";
 
 
 const getBase64= (img, callback) => {
@@ -60,21 +60,8 @@ const UpdateUser = () => {
 
 
     const handleChange = info => {
-        console.log('changing info', info.file.status)
-        // if (info.file.status === 'uploading') {
-        //     console.log('uploading', info.file.status)
-        //   setLoading(true)
-        //   return;
-        // }
-        // if (info.file.status === 'done') {
-        //     console.log('done', info.file.status)
-        //   // Get this url from response in real world.
-        //   getBase64(info.file.originFileObj, image => {
-        //     setUserInfo({...userInfo, userImage: image})
-        //     setLoading(false)
-        //     }
-        //   )
-        // }
+        
+        console.log('base64 image:', image)
         getBase64(info.file.originFileObj, image => {
             setUserInfo({...userInfo, userImage: image})
             setLoading(false)
@@ -114,7 +101,7 @@ const UpdateUser = () => {
                                 <Upload
                                     name="avatar"
                                     listType="picture-card"
-                                    className="avatar-uploader"
+                                    className="profile-uploader"
                                     showUploadList={false}
                                     beforeUpload={beforeUpload}
                                     onChange={handleChange}
@@ -142,6 +129,12 @@ const UpdateUser = () => {
                                         label="My Skills"
                                         mode="multiple"
                                         data={skills}
+                                    />
+                                    <AntdSelect
+                                        name="myTools"
+                                        label="My Tools"
+                                        mode="multiple"
+                                        data={tools}
                                     />
                                     <AntdInput
                                         name="website"
