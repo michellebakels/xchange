@@ -5,14 +5,14 @@ export const skills = [
     'branding',
     'software development'
 ]
+export const taskStatus = [
+    'Open',
+    'In Progress',
+    'Done'
+]
 export const tools = [
     'mailchimp',
     'figma',
     'firestore',
     'mongo db'
-]
-export const taskStatus = [
-    'Open',
-    'In Progress',
-    'Done'
 ]
