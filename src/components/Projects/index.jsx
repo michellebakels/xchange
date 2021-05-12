@@ -27,7 +27,7 @@ const Projects = () => {
             skillsNeeded: task.skillsNeeded,
             deadline: task.neededBy
         })))
-
+        
         setTableData(builtData)
 
         console.log('builtdata -->', builtData)
