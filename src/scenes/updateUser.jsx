@@ -60,21 +60,8 @@ const UpdateUser = () => {
 
 
     const handleChange = info => {
-        console.log('changing info', info.file.status)
-        // if (info.file.status === 'uploading') {
-        //     console.log('uploading', info.file.status)
-        //   setLoading(true)
-        //   return;
-        // }
-        // if (info.file.status === 'done') {
-        //     console.log('done', info.file.status)
-        //   // Get this url from response in real world.
-        //   getBase64(info.file.originFileObj, image => {
-        //     setUserInfo({...userInfo, userImage: image})
-        //     setLoading(false)
-        //     }
-        //   )
-        // }
+        
+        console.log('base64 image:', image)
         getBase64(info.file.originFileObj, image => {
             setUserInfo({...userInfo, userImage: image})
             setLoading(false)
