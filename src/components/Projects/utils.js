@@ -37,10 +37,18 @@ export const columns = [
         title: 'Deadline',
         dataIndex: 'deadline',
         key: 'deadline',
+        sorter: {
+            compare: (ascend, descend) => ascend.deadline - descend.deadline,
+            multiple: 2
+        }
     },
     {
         title: 'Tokens',
         dataIndex: 'tokens',
         key: 'tokens',
+        sorter: {
+            compare: (ascend, descend) => ascend.tokens - descend.tokens,
+            multiple: 1
+        }
     }
 ];
