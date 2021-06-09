@@ -59,28 +59,28 @@ function App() {
             <Content style={{ padding: '24px 50px'}}>
               <div>
                 <Switch>
-                  <Route path="/user-profile">
+                  <Route exact path="/user-profile">
                       {authUser && <UserProfile />}
                   </Route>
-                  <Route path="/users">
+                  <Route exact path="/users">
                       {authUser && <Users />}
                   </Route>
-                  <Route path="/create-project">
+                  <Route exact path="/create-project">
                       {authUser && <CreateProject />}
                   </Route>
-                  <Route path="/updateUser">
+                  <Route exact path="/updateUser">
                       {authUser && <UpdateUser user={userInfo} />}
                   </Route>
-                  <Route path="/transactions">
+                  <Route exact path="/transactions">
                       {authUser && <Transactions />}
                   </Route>
-                  <Route path="/create-transaction">
+                  <Route exact path="/create-transaction">
                       {authUser && <CreateTransaction />}
                   </Route>
-                  <Route path="/about">
+                  <Route exact path="/about">
                     <About />
                   </Route>
-                  <Route path="/project">
+                  <Route exact path="/project/:taskId">
                     <Project />
                   </Route>
                     <Route exact path="/login">

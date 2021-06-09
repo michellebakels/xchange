@@ -11,9 +11,9 @@ export const columns = [
         title: 'Task',
         dataIndex: 'title',
         key: 'title',
-        render: (text) => {
+        render: (text, record) => {
             return {
-                children: <Link to='/project'>{text}</Link>,
+                children: <Link to={`/project/${record.id}`}>{text}</Link>,
             };
         },
     },

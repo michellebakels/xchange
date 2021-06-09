@@ -8,4 +8,6 @@
     border-radius: 25px;
     padding: 4px 12px;
     margin: 8px;
+    white-space: nowrap;
+    display:inline-block;
 }
