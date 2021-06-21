@@ -55,3 +55,8 @@
 .ant-layout-sider-trigger {
     width: inherit !important;
 }
+
+.user-profile-img {
+    height: 150px;
+    width: auto;
+}

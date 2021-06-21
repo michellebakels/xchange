@@ -28,16 +28,23 @@ const Project = () => {
                         <div>
                         {task?.skillsNeeded && (task?.skillsNeeded).map(skill => {
                             return(
-                                <div className="tag" key={skill}>{skill}</div>
+                                <div className="skill-tag" key={skill}>{skill}</div>
                             )
                         })}
+                        </div>
+                        <div>
+                            {task?.toolsNeeded && (task?.toolsNeeded).map(tool => {
+                                return(
+                                    <div className="tool-tag" key={tool}>{tool}</div>
+                                )
+                            })}
                         </div>
                     </Card>
                 </Col>
                 <Col span={14}>
                     <Card>
                         <p><b>Status:&nbsp;</b>{task?.status}</p>
-                        <p><b>Due&nbsp;Date:&nbsp;</b>{task?.deadline}</p>
+                        <p><b>Due&nbsp;Date:&nbsp;</b>{task?.neededBy}</p>
                         <br/>
                         <h3>Project Overview</h3>
                         <p>{task?.description}</p>

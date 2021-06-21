@@ -15,6 +15,7 @@ const submitForm = (fields, userInfo) => {
     fields && fields.forEach((field) => formFields[field.name[0]] = field.value)
     formFields.tokens = formFields.tokens && parseInt(formFields.tokens)
     formFields.neededBy = moment(formFields.neededBy).format('MM/DD/YYYY')
+    formFields.status = 'Open'
     formFields.user = {
         userId: userInfo?.id,
         firstName: userInfo?.firstName,

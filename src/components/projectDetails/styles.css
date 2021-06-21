@@ -2,8 +2,18 @@
     text-align: center;
 }
 
-.tag {
+.skill-tag {
     background: #109CF1;
+    color: white;
+    border-radius: 25px;
+    padding: 4px 12px;
+    margin: 8px;
+    white-space: nowrap;
+    display:inline-block;
+}
+
+.tool-tag {
+    background: #87d068;
     color: white;
     border-radius: 25px;
     padding: 4px 12px;

@@ -43,6 +43,8 @@ function App() {
         setCollapsed(!collapsed);
     };
 
+    const currentYear = new Date().getFullYear()
+
   return (
       <Router>
           <AuthContext.Provider value={{ authUser, setAuthUser }}>
@@ -95,7 +97,7 @@ function App() {
                 </Switch>
               </div>
             </Content>
-            <Footer style={{ textAlign: 'center' }}>Copyright © 2021. All Rights Reserved</Footer>
+            <Footer style={{ textAlign: 'center' }}>Copyright © {currentYear}. All Rights Reserved</Footer>
           </Layout>
         </Layout>
         </UserContext.Provider>

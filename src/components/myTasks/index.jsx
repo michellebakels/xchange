@@ -1,18 +1,19 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 import {Table, Tag} from "antd";
 import {Link} from "react-router-dom";
-// import {data} from "../../data";
-import './styles.css'
-import {columns} from "./utils";
+import '../Projects/styles.css'
+import {columns} from "./columns";
+import {UserContext} from "../../App";
 
 
-const Projects = () => {
+const MyTasks = () => {
 
     const [tasks, setTasks] = useState([])
     const [tableData, setTableData] = useState([])
+    const { userInfo } = useContext(UserContext)
 
     useEffect(() => {
-        fetch (`https://xchange-api-1909.web.app/tasks/`)
+        fetch (`https://xchange-api-1909.web.app/tasks/${userInfo.id}`)
             .then((res) => res.json())
             .then((response) => setTasks(response.data))
             .catch(err => console.log('ERROR', err))
@@ -23,7 +24,6 @@ const Projects = () => {
 
         tasks.forEach(task => builtData.push(({
             id: task.id,
-            contact: (task.user && `${task.user.firstName} ${task.user.lastName}`),
             title: task.title,
             skillsNeeded: task.skillsNeeded,
             deadline: task.neededBy,
@@ -33,6 +33,8 @@ const Projects = () => {
         setTableData(builtData)
 
     }, [tasks])
+
+    console.log(tasks)
 
     return (
         <div>
@@ -47,4 +49,4 @@ const Projects = () => {
     )
 }
 
-export default Projects
+export default MyTasks
