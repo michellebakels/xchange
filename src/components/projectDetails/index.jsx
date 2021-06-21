@@ -1,12 +1,15 @@
-import React, {useEffect, useState} from 'react'
-import {Card, Col, Row} from "antd";
+import React, {useContext, useEffect, useState} from 'react'
+import {Button, Card, Col, Row} from "antd";
 import './styles.css'
-import {useParams} from "react-router-dom";
+import {useHistory, useParams} from "react-router-dom";
+import {UserContext} from "../../App";
 
 const Project = () => {
 
     const { taskId } = useParams()
     const [task, setTask] = useState(undefined)
+    const { userInfo } = useContext(UserContext)
+    const history = useHistory()
 
     useEffect(() => {
         fetch (`https://xchange-api-1909.web.app/tasks/id/${taskId}`)
@@ -39,6 +42,19 @@ const Project = () => {
                                 )
                             })}
                         </div>
+                        {(userInfo?.id === task?.user?.userId) &&
+                            <>
+                                <br/>
+                                <div style={{textAlign: "center"}}>
+                                    <Button
+                                        className="button"
+                                        onClick={() => history.push(`/updateUser/${userInfo.id}`)}
+                                    >
+                                        Edit Task
+                                    </Button>
+                                </div>
+                            </>
+                        }
                     </Card>
                 </Col>
                 <Col span={14}>

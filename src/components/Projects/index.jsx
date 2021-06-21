@@ -37,7 +37,7 @@ const Projects = () => {
     return (
         <div>
             <div className="create-project-link">
-                <Link to="/create-project">+ Create New Task</Link>
+                <Link to="/task-form">+ Create New Task</Link>
             </div>
             <Table
                 columns={columns}

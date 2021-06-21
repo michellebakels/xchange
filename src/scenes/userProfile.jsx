@@ -9,7 +9,6 @@ const UserProfile = () => {
   const { userInfo } = useContext(UserContext)
   const history = useHistory()
 
-
   return (
     <Row justify="space-around">
       <Col span={8}>

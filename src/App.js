@@ -13,7 +13,7 @@ import {Layout, Menu} from 'antd';
 import Home from "./scenes/home";
 import Users from "./scenes/users";
 import UserProfile from "./scenes/userProfile";
-import CreateProject from "./scenes/createProject";
+import TaskForm from "./scenes/taskForm";
 import UpdateUser from "./scenes/updateUser";
 import About from "./scenes/about";
 import Transactions from "./scenes/transactions";
@@ -67,8 +67,8 @@ function App() {
                   <Route exact path="/users">
                       {authUser && <Users />}
                   </Route>
-                  <Route exact path="/create-project">
-                      {authUser && <CreateProject />}
+                  <Route exact path="/task-form">
+                      {authUser && <TaskForm />}
                   </Route>
                   <Route exact path="/updateUser">
                       {authUser && <UpdateUser user={userInfo} />}
