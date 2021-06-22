@@ -1,10 +1,9 @@
 import React from 'react'
+import TransactionsTable from "../components/transactionsTable";
 
 const Transactions = () => {
     return(
-        <div>
-            Transactions
-        </div>
+        <TransactionsTable />
     )
 }
 

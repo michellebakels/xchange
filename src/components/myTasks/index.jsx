@@ -34,8 +34,6 @@ const MyTasks = () => {
 
     }, [tasks])
 
-    console.log(tasks)
-
     return (
         <div>
             <div className="create-project-link">
