@@ -1,10 +1,8 @@
 import React, {useState, useEffect} from 'react'
 import {Table, Tag} from "antd";
 import {Link} from "react-router-dom";
-// import {data} from "../../data";
 import './styles.css'
 import {columns} from "./utils";
-
 
 const Projects = () => {
 

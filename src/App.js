@@ -67,7 +67,7 @@ function App() {
                   <Route exact path="/users">
                       {authUser && <Users />}
                   </Route>
-                  <Route exact path="/task-form">
+                  <Route exact path="/task-form/:mode?/:taskId?">
                       {authUser && <TaskForm />}
                   </Route>
                   <Route exact path="/updateUser">

@@ -48,7 +48,7 @@ const Project = () => {
                                 <div style={{textAlign: "center"}}>
                                     <Button
                                         className="button"
-                                        onClick={() => history.push(`/updateUser/${userInfo.id}`)}
+                                        onClick={() => history.push(`/task-form/update/${taskId}`)}
                                     >
                                         Edit Task
                                     </Button>
