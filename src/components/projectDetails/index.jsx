@@ -43,6 +43,7 @@ const Project = () => {
                             })}
                         </div>
                         {(userInfo?.id === task?.user?.userId) &&
+                            task.status !== 'Done' &&
                             <>
                                 <br/>
                                 <div style={{textAlign: "center"}}>
@@ -60,6 +61,7 @@ const Project = () => {
                 <Col span={14}>
                     <Card>
                         <p><b>Status:&nbsp;</b>{task?.status}</p>
+                        {task?.status !== 'Open' && <p><b>Assignee:&nbsp;</b>{task?.assignee?.name}</p>}
                         <p><b>Due&nbsp;Date:&nbsp;</b>{task?.neededBy}</p>
                         <br/>
                         <h3>Project Overview</h3>

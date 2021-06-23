@@ -1,10 +1,11 @@
 import React, { useContext, useState, useEffect } from 'react'
-import { useHistory } from 'react-router-dom'
+import {useHistory, useParams} from 'react-router-dom'
 import { Button, Card, Col, Form, Row, Upload, message } from 'antd'
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons'
 import { AntdInput, AntdSelect, AntdTextArea } from '../components/antdMappedComponents/antdMapper'
 import { UserContext } from '../App'
 import { skills, tools } from '../global/referenceData'
+import moment from "moment";
 
 export const layout = {
 	labelCol: { span: 6 },
@@ -12,14 +13,26 @@ export const layout = {
 }
 
 const UpdateUser = () => {
-	const history = useHistory()
 
+	const history = useHistory()
 	const [isValidImage, setIsValidImage] = useState(false)
 	const [userImage, setUserImage] = useState(null)
 	const [loading, setLoading] = useState(false)
 	const [fields, setFields] = useState()
 	const { userInfo, setUserInfo } = useContext(UserContext)
 	const [form] = Form.useForm()
+	const { userId } = useParams()
+
+	useEffect(() => {
+		if (userId) {
+			fetch(`https://xchange-api-1909.web.app/users/id/${userId}`)
+				.then((res) => res.json())
+				.then((response) => {
+					return form.setFieldsValue(response.data)
+				})
+				.catch(err => console.log('ERROR', err))
+		}
+	}, [])
 
 	const uploadButton = (
 		<div>

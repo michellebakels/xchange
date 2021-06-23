@@ -13,11 +13,13 @@ const MyTasks = () => {
     const { userInfo } = useContext(UserContext)
 
     useEffect(() => {
-        fetch (`https://xchange-api-1909.web.app/tasks/${userInfo.id}`)
-            .then((res) => res.json())
-            .then((response) => setTasks(response.data))
-            .catch(err => console.log('ERROR', err))
-    },[])
+        if (userInfo && userInfo.id) {
+            fetch(`https://xchange-api-1909.web.app/tasks/${userInfo.id}`)
+                .then((res) => res.json())
+                .then((response) => setTasks(response.data))
+                .catch(err => console.log('ERROR', err))
+        }
+    },[userInfo])
 
     useEffect(() => {
         const builtData = []

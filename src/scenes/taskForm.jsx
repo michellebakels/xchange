@@ -56,12 +56,12 @@ const TaskForm = () => {
     const history = useHistory()
 
     useEffect(() => {
-        if (mode === 'update') {
+        if (mode === 'update' && taskId) {
             fetch(`https://xchange-api-1909.web.app/tasks/id/${taskId}`)
                 .then((res) => res.json())
                 .then((response) => {
                     response.data.neededBy = moment(response?.data?.neededBy)
-                    response.data.assignee = response?.data?.assignee.name
+                    response.data.assignee = response?.data?.assignee?.name
                     return form.setFieldsValue(response.data)
                 })
                 .catch(err => console.log('ERROR', err))
@@ -71,7 +71,7 @@ const TaskForm = () => {
                 .then((response) => setUsers(response))
                 .catch(err => console.log('ERROR', err))
         }
-    }, [taskId])
+    }, [])
 
     return(
         <>
