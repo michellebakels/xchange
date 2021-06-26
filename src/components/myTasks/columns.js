@@ -45,5 +45,10 @@ export const columns = [
             compare: (ascend, descend) => ascend.tokens - descend.tokens,
             multiple: 1
         }
+    },
+    {
+        title: 'Status',
+        dataIndex: 'status',
+        key: 'status',
     }
 ];

@@ -1,7 +1,11 @@
 import {Link} from "react-router-dom";
-import {Tag} from "antd";
 
 export const columns = [
+    {
+        title: 'Requester',
+        dataIndex: 'requester',
+        key: 'requester'
+    },
     {
         title: 'Task',
         dataIndex: 'title',
@@ -13,22 +17,13 @@ export const columns = [
         },
     },
     {
-        title: 'Requester',
-        dataIndex: 'requester',
-        key: 'requester'
-    },
-    {
         title: 'Assignee',
         dataIndex: 'assignee',
         key: 'assignee'
-    }/*,
+    },
     {
         title: 'Tokens',
         dataIndex: 'tokens',
-        key: 'tokens',
-        sorter: {
-            compare: (ascend, descend) => ascend.tokens - descend.tokens,
-            multiple: 1
-        }
-    }*/
+        key: 'tokens'
+    }
 ];

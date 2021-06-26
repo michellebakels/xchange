@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useContext} from 'react'
-import {Table, Tag} from "antd";
+import {Table} from "antd";
 import {Link} from "react-router-dom";
 import '../Projects/styles.css'
 import {columns} from "./columns";
@@ -25,11 +25,12 @@ const MyTasks = () => {
         const builtData = []
 
         tasks.forEach(task => builtData.push(({
-            id: task.id,
-            title: task.title,
-            skillsNeeded: task.skillsNeeded,
-            deadline: task.neededBy,
-            tokens: task.tokens
+            id: task?.id || '-',
+            title: task?.title || '-',
+            skillsNeeded: task?.skillsNeeded || '-',
+            deadline: task?.neededBy || '-',
+            status: task?.status || '-',
+            tokens: task?.tokens || '-'
         })))
 
         setTableData(builtData)

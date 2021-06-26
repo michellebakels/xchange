@@ -3,13 +3,12 @@ import './App.css'
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom"
 import firebase from 'firebase/app'
 import {firebaseConfig} from "./config";
 import 'antd/dist/antd.css';
-import {Layout, Menu} from 'antd';
+import {Layout} from 'antd';
 import Home from "./scenes/home";
 import Users from "./scenes/users";
 import UserProfile from "./scenes/userProfile";

@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import {Table, Tag} from "antd";
+import {Table} from "antd";
 import {Link} from "react-router-dom";
 import './styles.css'
 import {columns} from "./utils";
@@ -20,6 +20,7 @@ const Projects = () => {
         const builtData = []
 
         tasks.forEach(task => builtData.push(({
+            key: task.id,
             id: task.id,
             contact: (task.user && `${task.user.firstName} ${task.user.lastName}`),
             title: task.title,

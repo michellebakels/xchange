@@ -18,11 +18,12 @@ const TransactionsTable = () => {
         const builtData = []
 
         tasks.forEach(task => builtData.push(({
+            key: task.id,
             id: task.id,
             title: task.title,
             requester: `${task.user.firstName} ${task.user.lastName}`,
             assignee: task.assignee.name,
-            // tokens: task.tokens
+            tokens: task.tokens
         })))
 
         setTableData(builtData)

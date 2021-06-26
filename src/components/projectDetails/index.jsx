@@ -51,7 +51,7 @@ const Project = () => {
                                         className="button"
                                         onClick={() => history.push(`/task-form/update/${taskId}`)}
                                     >
-                                        Edit Task
+                                        Update Task
                                     </Button>
                                 </div>
                             </>
