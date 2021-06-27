@@ -57,15 +57,12 @@
 }
 
 .user-profile-img {
-    height: 150px;
+    height: 100px;
     width: auto;
+    border-radius: 50%;
 }
 
 .dropzone {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     padding: 20px;
     border-width: 2px;
     border-radius: 2px;
@@ -78,7 +75,5 @@
 }
 
 .dropzone-container {
-     display: flex;
-     flex-direction: column;
-     font-family: sans-serif;
+    width: 250px;
  }

@@ -3,6 +3,7 @@ import {Button, Card, Col, Row} from "antd";
 import './styles.css'
 import {useHistory, useParams} from "react-router-dom";
 import {UserContext} from "../../App";
+import image from "../../img_avatar.png";
 
 const Project = () => {
 
@@ -26,6 +27,13 @@ const Project = () => {
                         className="title-card"
                     >
                         <h2>{task?.title}</h2>
+                        <div>
+                            {userInfo?.userImage ? (
+                                <img className="user-profile-img" src={userInfo.userImage} />
+                            ) : (
+                                <img className="user-profile-img" src={image} alt="userImage" />
+                            )}
+                        </div>
                         <p><b>{`${task?.user?.firstName} ${task?.user?.lastName}`}</b></p>
                         {/*<p>Posted:&nbsp;{task?.created}</p>*/}
                         <div>

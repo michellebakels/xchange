@@ -14,8 +14,9 @@ export const layout = {
 
 const thumbsContainer = {
 	display: 'flex',
-	justifyContent: 'space-around',
-	marginTop: 16
+	flexDirection: 'row',
+    justifyContent: 'space-around',
+	marginTop: 16,
 };
 
 const thumb = {
@@ -143,16 +144,18 @@ const UpdateUser = () => {
 						<Card title="Update User">
 							<Row justify="space-around">
 								<Col span={20}>
-									<section className="dropzone-container">
-										{!userImage &&
-										<div {...getRootProps({className: 'dropzone'})}>
-											<input {...getInputProps()} />
-											<p>Drag 'n' drop an image here, or click to select an image</p>
-										</div>}
-										<aside style={thumbsContainer}>
-											{thumbs}
-										</aside>
-									</section>
+									<Row justify="space-around">
+										<div className="dropzone-container">
+											{!userImage &&
+											<div {...getRootProps({className: 'dropzone'})}>
+												<input {...getInputProps()} />
+												<p>Drag 'n' drop an image here, or click to select an image</p>
+											</div>}
+											<aside style={thumbsContainer}>
+												{thumbs}
+											</aside>
+										</div>
+									</Row>
 
 									<AntdInput name="firstName" label="First Name" />
 									<AntdInput name="lastName" label="Last Name" />
