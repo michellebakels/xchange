@@ -1,23 +1,59 @@
 import React, { useContext, useState, useEffect } from 'react'
 import {useHistory, useParams} from 'react-router-dom'
-import { Button, Card, Col, Form, Row, Upload, message } from 'antd'
-import { LoadingOutlined, PlusOutlined } from '@ant-design/icons'
+import { Button, Card, Col, Form, Row } from 'antd'
+import { CloseOutlined } from '@ant-design/icons';
+import {useDropzone} from 'react-dropzone'
 import { AntdInput, AntdSelect, AntdTextArea } from '../components/antdMappedComponents/antdMapper'
 import { UserContext } from '../App'
 import { skills, tools } from '../global/referenceData'
-import moment from "moment";
 
 export const layout = {
 	labelCol: { span: 6 },
 	wrapperCol: { span: 18 },
 }
 
+const thumbsContainer = {
+	display: 'flex',
+	justifyContent: 'space-around',
+	marginTop: 16
+};
+
+const thumb = {
+	display: 'inline-flex',
+	borderRadius: 2,
+	border: '1px solid #eaeaea',
+	marginBottom: 8,
+	marginRight: 8,
+	width: 100,
+	height: 100,
+	padding: 4,
+	boxSizing: 'border-box'
+};
+
+const thumbInner = {
+	display: 'flex',
+	minWidth: 0,
+	overflow: 'hidden'
+};
+
+const img = {
+	display: 'block',
+	width: 'auto',
+	height: '100%'
+};
+
+const deleteImage = {
+	backgroundColor: 'red',
+	color: 'white',
+	marginRight: -16,
+	marginTop: -8,
+	verticalAlign: 'top'
+}
+
 const UpdateUser = () => {
 
 	const history = useHistory()
-	const [isValidImage, setIsValidImage] = useState(false)
-	const [userImage, setUserImage] = useState(null)
-	const [loading, setLoading] = useState(false)
+	const [userImage, setUserImage] = useState(undefined)
 	const [fields, setFields] = useState()
 	const { userInfo, setUserInfo } = useContext(UserContext)
 	const [form] = Form.useForm()
@@ -34,41 +70,10 @@ const UpdateUser = () => {
 		}
 	}, [])
 
-	const uploadButton = (
-		<div>
-			{loading ? <LoadingOutlined /> : <PlusOutlined />}
-			<div style={{ marginTop: 8 }}>Upload</div>
-		</div>
-	)
-
-	const getBase64 = (img, callback) => {
-		if (isValidImage) {
-			const reader = new FileReader()
-			reader.addEventListener('load', () => callback(reader.result))
-			reader.readAsDataURL(img)
-		}
-	}
-
-	const beforeUpload = (file) => {
-		const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png'
-		if (!isJpgOrPng) {
-			message.error('You can only upload JPG/PNG file!')
-		}
-		const isLt2M = file.size / 1024 / 1024 < 2
-		if (!isLt2M) {
-			message.error('Image must smaller than 2MB!')
-		}
-		setIsValidImage(isJpgOrPng && isLt2M)
-		return isJpgOrPng && isLt2M
-	}
-
-	const handleChange = (info) => {
-		getBase64(info.file.originFileObj, (image) => {
-			setUserImage(image)
-			// setUserInfo({ ...userInfo, userImage: image })
-			setLoading(false)
-		})
-	}
+	useEffect(() => () => {
+		// Make sure to revoke the data uris to avoid memory leaks
+		URL.revokeObjectURL(userImage?.preview);
+	}, [userImage]);
 
 	const apiCallGetUser = (userId, setUserInfo) => {
 		fetch(`https://xchange-api-1909.web.app/users/id/${userId}`)
@@ -82,9 +87,8 @@ const UpdateUser = () => {
 
 	const submitForm = (fields, userId, setUserInfo) => {
 		const formFields = {}
-		fields &&
-			fields.forEach((field) => (formFields[field.name[0]] = field.value))
-		formFields.userImage = userImage
+		fields && fields.forEach((field) => (formFields[field.name[0]] = field.value))
+		formFields.userImage = userImage[0].preview
 		console.log(JSON.stringify(formFields))
 
 		fetch(`https://xchange-api-1909.web.app/users/${userId}`, {
@@ -96,6 +100,34 @@ const UpdateUser = () => {
 			.then((result) => apiCallGetUser(result.data.userId, setUserInfo))
 			.catch((err) => console.log('ERROR', err))
 	}
+
+	const {getRootProps, getInputProps} = useDropzone({
+		accept: 'image/*',
+		onDrop: acceptedFiles => {
+			setUserImage(acceptedFiles.map(file => Object.assign(file, {
+				preview: URL.createObjectURL(file)
+			})));
+		}, multiple: false
+	});
+
+	const thumbs = userImage && userImage.map(file => (
+		<div key={file.preview}>
+			<Button
+				shape="circle"
+				onClick={() => setUserImage(undefined)}
+				icon={<CloseOutlined />}
+				style={deleteImage}
+			/>
+			<div style={thumb} key={file.name}>
+				<div style={thumbInner}>
+					<img
+						src={file.preview}
+						style={img}
+					/>
+				</div>
+			</div>
+		</div>
+	));
 
 	return (
 		<>
@@ -111,24 +143,16 @@ const UpdateUser = () => {
 						<Card title="Update User">
 							<Row justify="space-around">
 								<Col span={20}>
-									<Upload
-										name="userImage"
-										listType="picture-card"
-										className="profile-uploader"
-										showUploadList={false}
-										beforeUpload={beforeUpload}
-										onChange={handleChange}
-									>
-										{userImage ? (
-											<img
-												src={userImage}
-												alt="Profile picture"
-												style={{ width: '100%' }}
-											/>
-										) : (
-											uploadButton
-										)}
-									</Upload>
+									<section className="dropzone-container">
+										{!userImage &&
+										<div {...getRootProps({className: 'dropzone'})}>
+											<input {...getInputProps()} />
+											<p>Drag 'n' drop an image here, or click to select an image</p>
+										</div>}
+										<aside style={thumbsContainer}>
+											{thumbs}
+										</aside>
+									</section>
 
 									<AntdInput name="firstName" label="First Name" />
 									<AntdInput name="lastName" label="Last Name" />
